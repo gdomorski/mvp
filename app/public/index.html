@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<title>Beast Mode</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcq6rT4gDQyPqEQX3Mp9TKVkiivwmyqwE"></script>
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="./scripts/app.js"> </script>
+  <link href="./styles/main.css" rel="stylesheet">
+</head>
+
+
+<body ng-app="beastMode">
+<div id="map"></div>
+
+<div>
+  <h1> Beast Mode </h1>
+  <img style="margin" src="assets/cena.png" />
+  <div ng-controller="beastModeMap" ng-init="initMap()">
+    <button ng-click="showGymMarkers()"> Show Gym Markers </button>
+    <button ng-click="getLocation()"> Show My Location </button>
+    <button> Clear Map </button>
+	</div>
+</div>
+
+</body>
+</html>

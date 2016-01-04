@@ -1,0 +1,21 @@
+{
+  "name": "beastmode",
+  "description": "",
+  "main": "config.js",
+  "authors": [
+    "gdomorski <gregdomorski@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}
