@@ -8,6 +8,7 @@ var express = require('express'),
 		formDataParser = bodyParser.urlencoded({extended: false});
 
 app.use(express.static('public'));
+// app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.get('/getReviewers', function(req, res){
 	Reviewer.find({}, {_id:0, __v:0}, function(err, data){
