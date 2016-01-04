@@ -1,4 +1,5 @@
 # Project Name #
+Beast Mode
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -17,28 +18,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  Beast Mode
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  A app that will change the way you pick a gym. 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+   When you visit the website you will automatically be presented with a map from Google Maps API. The frontend will be in Angular, backend will be in 
+   node, express. All reviews for the gyms will be stored in MongoDB. 
 
 ## Problem ##
-  > Describe the problem your product solves.
+  There are many gyms in the San Francisco Area. However, which one is the best? Beast Mode solves that problem.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  This app will make it easier for Hack Reactor students which gym to pick due varying reviews and seeing the location with Google Maps API.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  "This App will revolutionize how people pick gyms in the local area."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  You only need to log onto the website to start using this app. Then you will see many different options to choose from. 
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "I was able to pick the best gym ever using this app!"
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
