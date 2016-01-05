@@ -1,44 +1,6 @@
-angular.module('beastMode', ['ngRoute'])
+angular.module('beastMode.map', [])
 
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '963080633758734',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-angular.module('beastMode', ['ngRoute'])
-
-
-.config(function($routeProvider){
-	$routeProvider
-
-	.when('/', {
-		controller: 'beastModeMap',
-		templateUrl: 'login.html'
-	})
-
-	.when('/links', {
-		templateUrl: '/gymReviews.html'
-	})
-
-	.when('/addReview', {
-		templateUrl: '/gymReviews.html'
-	});
-})
-
-.controller('beastModeMap', function($scope){
+.controller('beastModeMap', function($scope, $compile){
 	$scope.name = "Login Please";
 	$scope.myMap = '';
 	$scope.FBLogin = function(){
@@ -46,13 +8,21 @@ angular.module('beastMode', ['ngRoute'])
 			if(response.authResponse){
 				console.log('Welcome! Fetching your information');
 				FB.api('/me', function(response) {
-					console.log('Good to see you ' + response.name + ".");
-					console.log(response)
+				var facebookButton = document.getElementById('fbbutton');
+				facebookButton.innerHTML = 'You Successfully Logged in ' + response.name + '<br><button ng-click="FBlogout()">Facebook Logout</button>';
+				console.log('Good to see you ' + response.name + ".");
+				console.log(response);
 				});
 			}else{
 				console.log("User cancelled Login or did not authorize");
 			}
-		});
+	});
+	$scope.FBlogout = function(){
+		console.log('hey');
+		FB.logout(function(response) {
+			console.log(response);
+			});
+		};
 	};
 	$scope.getLocation = function() {
 	  var myLoc;
@@ -88,11 +58,11 @@ angular.module('beastMode', ['ngRoute'])
 	},
 	$scope.showGymMarkers = function(){
 		var myGyms = [
-      ['<h4>Planet Fitness</h4> Hours: 9 a.m.- 10 p.m. <p><a href="#links"> Read More Here </a>', 37.793686, -122.401268, '../assets/planetfitness.png'],
-      ['<h4>24 Hour Fitness</h4> Hours: 9 a.m.- 10 p.m. <p><a href="#links"> Read More Here </a', 37.789911, -122.402327, '../assets/24hourfitness.png'],
-      ['<h4>Crunch</h4> Hours: 9 a.m.- 10 p.m. <p><a href="#links"> Read More Here </a>', 37.790051, -122.390192, '../assets/crunch.png'],
-      ['<h4>Active Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a href="#links"> Read More Here </a>', 37.788574, -122.410391, '../assets/activesportsclub.png'],
-      ['<h4>Equinox Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a href="#links"> Read More Here </a>', 37.786551, -122.404334, '../assets/equinox.png']
+      ['<h4>Planet Fitness</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click"getGymInfo(planetfitness)"> Read More Here </a>', 37.793686, -122.401268, '../assets/planetfitness.png'],
+      ['<h4>24 Hour Fitness</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a', 37.789911, -122.402327, '../assets/24hourfitness.png'],
+      ['<h4>Crunch</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a>', 37.790051, -122.390192, '../assets/crunch.png'],
+      ['<h4>Active Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a>', 37.788574, -122.410391, '../assets/activesportsclub.png'],
+      ['<h4>Equinox Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a>', 37.786551, -122.404334, '../assets/equinox.png']
     ];
     var infowindow = new google.maps.InfoWindow({maxWidth: 160});
 		for (var i = 0; i < myGyms.length; i++) {  
@@ -112,7 +82,6 @@ angular.module('beastMode', ['ngRoute'])
 		}
 	};
 })
-
 
 
 

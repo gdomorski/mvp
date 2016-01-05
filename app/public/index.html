@@ -5,7 +5,10 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcq6rT4gDQyPqEQX3Mp9TKVkiivwmyqwE"></script>
   <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
   <script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="./scripts/startfacebook.js"> </script>
   <script type="text/javascript" src="./scripts/app.js"> </script>
+  <script type="text/javascript" src="./scripts/routes.js"> </script>
+  <script type="text/javascript" src="./scripts/directives.js"> </script>
   <link href="./styles/main.css" rel="stylesheet">
 </head>
 
@@ -18,13 +21,11 @@
   <div ng-controller="beastModeMap" ng-init="initMap()">
     <button ng-click="showGymMarkers()"> Show Gym Markers </button>
     <button ng-click="getLocation()"> Show My Location </button>
-    <button> Clear Map </button>
+    <button go-click="links"> Write Review </button>
   </div>
 </div>
 
-
 <div ng-view> </div>
-
 <div class="fb-comments" style="float: left" data-href="https://www.facebook.com/Beast-Mode-1962168420676025/" data-numposts="5"></div>
 <div
   class="fb-like"
@@ -32,7 +33,6 @@
   data-width="450"
   data-show-faces="true">
 </div>
-
 
 </body>
 </html>
