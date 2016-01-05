@@ -77,7 +77,7 @@ angular.module('beastMode.map', [])
       ['<h4>24 Hour Fitness</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a', 37.789911, -122.402327, '../assets/24hourfitness.png'],
       ['<h4>Crunch</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a>', 37.790051, -122.390192, '../assets/crunch.png'],
       ['<h4>Active Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a>', 37.788574, -122.410391, '../assets/activesportsclub.png'],
-      ['<h4>Equinox Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a href ng-click="getGymInfo(planetfitness)"> Read More Here </a>', 37.786551, -122.404334, '../assets/equinox.png']
+      ['<h4>Equinox Sports Club</h4> Hours: 9 a.m.- 10 p.m. <p><a ng-controller="reviewList" href ng-click="(planetfitness)"> Read More Here </a>', 37.786551, -122.404334, '../assets/equinox.png']
     ];
     var infowindow = new google.maps.InfoWindow({maxWidth: 160});
 		for (var i = 0; i < myGyms.length; i++) {  
@@ -100,16 +100,32 @@ angular.module('beastMode.map', [])
 }])
 
 .controller('reviewList', function ($scope, $http){
-	var category = "planetfitness";
+
+
+$scope.allGyms = [{id:1,'name':'Planet Fitness', 'fullname': 'planetfitness'},
+									{id:2,'name':'24 Hour Fitness', 'fullname': 'planetfitness'},
+									{id:3,'name':'Crunch', 'fullname': 'planetfitness'},
+									{id:4,'name':'Equinox Sports Club', 'fullname': 'planetfitness'},
+									{id:5,'name':'Active Sports Club', 'fullname': 'planetfitness'}
+];
+$scope.isClicked = false;
+$scope.reviews = "";
+$scope.findGym = function(input){
+	console.log(input);
+
+	 $scope.isClicked = true;
+	 var category = input
 		$http.get('/getReviewers?gym=' + category).
-  		success(function(data, status, headers, config) {
+  	success(function(data, status, headers, config) {
     $scope.reviews = data;
   }).
   error(function(data, status, headers, config) {
       
   });
+	};
 
-})
+
+});
 
 
 

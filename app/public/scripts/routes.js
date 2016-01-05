@@ -14,5 +14,10 @@ angular.module('beastMode', ['beastMode.map', 'beastMode.direct', 'ngRoute'])
 
 	.when('/addReview', {
 		templateUrl: '/gymReviews.html'
+	})
+
+	.when('/gymList', {
+		controller: 'reviewList',
+		templateUrl: '/gymList.html'
 	});
 });
