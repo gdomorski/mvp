@@ -11,6 +11,7 @@ var Reviewer = mongoose.model('Reviewer', {
 	},
 	name: String,
 	comment: String,
+	gym: String
 });
 
 module.exports = Reviewer;

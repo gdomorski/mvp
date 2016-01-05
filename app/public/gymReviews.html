@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html>
-<body>
+
+
+<h4> Write a review about Crunch Fitness </h4>
 
 <form action="/new" method="POST">
   <label for="name"> Name </label> 
-    <input type="text" name="name" /><br>
+    <input type="text" name="name" /><br/><br/>
   <label for="email"> Email </label> 
-    <input type="email" name="email" /><br>
-  <label for="comment"/> Comment </label>
-    <textarea type="text" name="comment" /> </textarea> 
-    <input type="submit"/>
+    <input type="email" name="email" /> <br/><br/>
+  <label for="comment"/> Comments </label>
+    <textarea type="text" name="comment" /> </textarea><br/><br/>
+  <label for="gym"/> Gym </label>
+  <select name="gym">
+	  <option value="planetfitness">Planet Fitness</option>
+	  <option value="24hourfitness">24 Hour Fitness</option>
+	  <option value="crunch">Crunch</option>
+	  <option value="equinox">Equinox Sports Club</option>
+	</select>
+  <input type="submit"/>
 </form>
 
-</body>
-</html>
