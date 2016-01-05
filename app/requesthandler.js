@@ -10,7 +10,10 @@ var express = require('express'),
 app.use(express.static('public'));
 
 app.get('/getReviewers', function(req, res){
-	Reviewer.find({}, {__v:0}, function(err, data){
+	var filters = {
+		gym: req.query.gym
+	};
+	Reviewer.find(filters , {__v:0}, function(err, data){
 		if(err){
 			res.json(err);
 		}else{
@@ -37,7 +40,5 @@ app.post('/new', formDataParser, function (req,res){
 app.get('/', function(request, response) {  
     response.sendFile('/public/index.html');  
 });  
-
-
 
 app.listen(port);

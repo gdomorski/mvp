@@ -18,14 +18,22 @@
 <div>
   <h1> Beast Mode </h1>
   <img style="margin" src="assets/cena.png" />
-  <div ng-controller="beastModeMap" ng-init="initMap()">
-    <button ng-click="showGymMarkers()"> Show Gym Markers </button>
-    <button ng-click="getLocation()"> Show My Location </button>
-    <button go-click="links"> Write Review </button>
-  </div>
+ 
+
+<div ng-controller="beastModeMap" ng-init="initMap()">
+  <button ng-click="showGymMarkers()"> Show Gym Markers </button>
+  <button ng-click="getLocation()"> Show My Location </button>
+  <button go-click="links"> Write Review </button>
 </div>
 
+
+</div>
+<div ng-controller="beastModeMap">
+
 <div ng-view> </div>
+</div>
+
+
 <div class="fb-comments" style="float: left" data-href="https://www.facebook.com/Beast-Mode-1962168420676025/" data-numposts="5"></div>
 <div
   class="fb-like"
@@ -33,6 +41,13 @@
   data-width="450"
   data-show-faces="true">
 </div>
+
+<div ng-controller="reviewList"> 
+<ul ng-repeat="review in reviews">
+  <li><i>{{review.comment}}</i> by <b>{{review.name}}</b></li>
+</ul>
+</div>
+
 
 </body>
 </html>

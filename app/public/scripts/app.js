@@ -1,28 +1,43 @@
 angular.module('beastMode.map', [])
 
-.controller('beastModeMap', function($scope, $compile){
+.controller('beastModeMap',['$scope', '$compile', '$http', function($scope, $compile, $http){
 	$scope.name = "Login Please";
+	$scope.isConnected = false;
 	$scope.myMap = '';
 	$scope.FBLogin = function(){
-		FB.login(function(response){
-			if(response.authResponse){
-				console.log('Welcome! Fetching your information');
-				FB.api('/me', function(response) {
-				var facebookButton = document.getElementById('fbbutton');
-				facebookButton.innerHTML = 'You Successfully Logged in ' + response.name + '<br><button ng-click="FBlogout()">Facebook Logout</button>';
-				console.log('Good to see you ' + response.name + ".");
-				console.log(response);
-				});
-			}else{
-				console.log("User cancelled Login or did not authorize");
-			}
-	});
+	    function getUserData () {
+	        console.log('Welcome! Fetching your information');
+	        FB.api('/me', function(response) {
+	            $scope.$apply(function(){
+	              $scope.name = "Welcome " + response.name;
+	              $scope.isConnected = true;
+            	});
+	            console.log('Good to see you ' + response.name + ".");
+	            console.log(response);
+	        });
+	    }
+	    FB.getLoginStatus(function (response) {
+	        if (response.authResponse) {
+	            return getUserData();
+	        }
+	        FB.login(function(response){
+	            if(response.authResponse){
+	                return getUserData();
+	            } else{
+	                console.log("User cancelled Login or did not authorize");
+	            }
+	        });
+	    });
+	};
 	$scope.FBlogout = function(){
 		console.log('hey');
 		FB.logout(function(response) {
-			console.log(response);
+				$scope.$apply(function(){
+	      $scope.name = 'Login Please';
+	      $scope.isConnected = false;
+        });
+	            
 			});
-		};
 	};
 	$scope.getLocation = function() {
 	  var myLoc;
@@ -81,7 +96,22 @@ angular.module('beastMode.map', [])
       })(gymMarker, i));
 		}
 	};
+
+}])
+
+.controller('reviewList', function ($scope, $http){
+	var category = "planetfitness";
+		$http.get('/getReviewers?gym=' + category).
+  		success(function(data, status, headers, config) {
+    $scope.reviews = data;
+  }).
+  error(function(data, status, headers, config) {
+      
+  });
+
 })
+
+
 
 
 
