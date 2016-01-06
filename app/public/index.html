@@ -2,7 +2,8 @@
 <html ng-app="beastMode">
 <head> 
 <title>Beast Mode</title>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcq6rT4gDQyPqEQX3Mp9TKVkiivwmyqwE"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcq6rT4gDQyPqEQX3Mp9TKVkiivwmyqwE&signed_in=true"></script>
   <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
   <script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="./scripts/startfacebook.js"> </script>
@@ -13,7 +14,29 @@
 </head>
 
 <body>
-
+<div id="floating-panel">
+    <b>Start: </b>
+    <select id="start">
+      <option value="37.783697, -122.408966">Hack Reactor</option>
+    </select>
+    <b>End: </b>
+    <select id="end" >
+      <option value="37.788574, -122.410391">Active Sports Club - Mason St.</option>
+      <option value="37.790367, -122.401346">Active Sports Club - Sansone St.</option>
+      <option value="37.792137, -122.410134">Active Sports Club - California St. </option>
+      <option value="37.794803, -122.398539">Active Sports Club - Embarcadero</option>
+      <option value="37.792041, -122.420695">Live Fit Gym - Polk St.</option>
+      <option value="37.775616, -122.423427">Live Fit Gym - Hayes Valley</option>
+      <option value="37.793686, -122.401268">Planet Fitness</option>
+      <option value="37.789911, -122.402327">24 Hour Fitness - Montgomery Street</option>
+      <option value="37.785233, -122.395693">24 Hour Fitness - 2nd Street</option>
+      <option value="37.786952, -122.421293">24 Hour Fitness - Van Ness Ave</option>
+      <option value="37.790051, -122.390192">Crunch Fitness - Spear St.</option>
+      <option value="37.788175, -122.400913">Crunch Fitness - New Montgomery</option>
+      <option value="37.786551, -122.404334">Equinox Sports Club</option>
+      <option value="37.785181, -122.407278">San Francisco Pilates</option>
+    </select>
+</div>
 <div id="map"></div>
 <div>
   <h1> Beast Mode </h1>
@@ -24,7 +47,7 @@
   <button ng-click="showGymMarkers()"> Show Gyms </button>
   <button ng-click="getLocation()"> Show My Location </button>
   <button go-click="links"> Write Review </button>
-  <button go-click="gymList"> Gym List </button>
+  <button go-click="gymList"> Find Review </button>
 </div>
 
 
@@ -34,24 +57,9 @@
 <div ng-view> </div>
 </div>
 
-<div class="fb-comments" style="float: left" data-href="https://www.facebook.com/Beast-Mode-1962168420676025/" data-numposts="5"></div>
-<div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+<div class="fb-comments" style="float: left;" data-href="https://www.facebook.com/Beast-Mode-1962168420676025/" data-numposts="5"></div>
 
 
-
-<!-- <div ng-controller="reviewList"> 
-
-<button ng-click="findGym()">Find Gyms</button>
-  <ul ng-repeat="review in reviews">
-    <li><i>{{review.comment}}</i> by <b>{{review.name}}</b></li>
-  </ul>
-</div>
- -->
 
 </body>
 </html>

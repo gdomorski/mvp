@@ -19,5 +19,10 @@ angular.module('beastMode', ['beastMode.map', 'beastMode.direct', 'ngRoute'])
 	.when('/gymList', {
 		controller: 'reviewList',
 		templateUrl: '/gymList.html'
+	})
+	.otherwise('/', {
+		controller: 'beastModeMap',
+		templateUrl: 'login.html'
 	});
+
 });

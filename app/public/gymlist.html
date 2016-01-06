@@ -1,17 +1,25 @@
-<div ng-controller="reviewList"> 
+<div ng-controller="reviewList" class="writeReview"> 
 
 
 <div ng-if="isClicked!==true"> 
 
 <label> Find Gym</label>
 <input placeholder="Enter Your Gym Here" ng-model="searchText"> 
-<ul style="text-indent: 20px" ng-repeat="club in allGyms | filter:searchText" >
+<ul ng-repeat="club in allGyms | filter:searchText" >
    <li class="pointAtMe" ng-click="findGym(club.fullname);">{{club.name}}</li>
 </ul>
 
 </div>
-
   <ul ng-repeat="review in reviews">
     <li><i>{{review.comment}}</i> by <b>{{review.name}}</b></li>
   </ul>
+</div>
+
+
+<div
+  style="width: 150px;"
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
 </div>
